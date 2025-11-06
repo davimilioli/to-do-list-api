@@ -2,6 +2,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 import Express, { Application } from "express";
 import router from "./routes";
+import cors from "cors";
 import sequelize from "./database/database";
 
 class App {
@@ -14,6 +15,7 @@ class App {
     }
 
     private initMiddlewares() {
+        this.app.use(cors())
         this.app.use(Express.urlencoded({ extended: true }));
         this.app.use(Express.json());
     }
